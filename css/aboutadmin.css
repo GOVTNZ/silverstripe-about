@@ -1,0 +1,25 @@
+.AboutAdmin .cms-content-view {
+	font-size: 1.8rem;
+	text-align: left;
+}
+
+.AboutAdmin .cms-content-view li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.AboutAdmin .cms-content-view a:link {
+	background-color: transparent;
+}
+
+.AboutAdmin .cms-content-fields h1 {
+	font-weight: bold;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+
+}
+
+.AboutAdmin .dependency-list thead td {
+	font-weight: bold;
+	text-decoration: underline;
+}

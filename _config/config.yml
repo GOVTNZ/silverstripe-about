@@ -1,0 +1,3 @@
+LeftAndMain:
+  extra_requirements_css:
+    - about/css/aboutadmin.css
