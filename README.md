@@ -42,6 +42,11 @@ By default, the list it looks for includes:
 If you want different modules to appear, you can use config to override AboutInfoOverview::$major_dependencies. This is a simple list
 of composer module names.
 
+## Disabling Providers
+
+By default, the module will look for all info provider classes, and show a menu item for them. If you want to suppress certain providers,
+you can do this by setting AboutAdmin::$excludeProviders, which is a simple array of class names of the providers you want to exclude.
+
 # Extending
 
 The admin interface uses a concept of a provider. These are just sub-classes of AboutInfoProvider. Each such class introduces

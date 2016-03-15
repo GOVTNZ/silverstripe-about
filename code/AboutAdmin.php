@@ -14,6 +14,12 @@ class AboutAdmin extends LeftAndMain {
 	
 	private static $menu_priority = 10;
 
+	/**
+	 * A list of provider class names to exclude from the about admin.
+	 * @config
+	 */
+	private static $exclude_providers = array();
+
 	// Render the main menu, which consists of a list of provider names.
 	public function Tools() {
 		return $this->renderWith('AboutAdmin_Tools');
@@ -23,11 +29,17 @@ class AboutAdmin extends LeftAndMain {
 	public function Providers() {
 		$config = Config::inst();
 		$providers = ClassInfo::subclassesFor('AboutInfoProvider');
+		$excludeProviders = $config->get(get_class($this), 'exclude_providers');
+
 		$list = new ArrayList();
 		foreach ($providers as $providerClass) {
 			if ($providerClass == 'AboutInfoProvider') {
 				// ignore the abstract
 				continue;
+			}
+
+			if (in_array($providerClass, $excludeProviders)) {
+				$continue;
 			}
 
 			$inst = Object::create($providerClass);
