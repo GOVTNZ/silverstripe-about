@@ -35,3 +35,7 @@
 .AboutAdmin td.value {
 	font-weight: bold;
 }
+
+.AboutAdmin pre {
+	font-family: "Courier New", Courier, monospace;
+}
