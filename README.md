@@ -10,7 +10,7 @@ The "About" module adds an admin section to your site that shows information abo
 
 # Installation
 
-Simply install via composer. There is currently nothing to configure.
+Simply install via composer. It will work without configuration, but the next section details some optional configuration properties.
 
 # Configuration
 
