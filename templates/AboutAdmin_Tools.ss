@@ -1,10 +1,10 @@
-<div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-CMSMain">
+<div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-AboutAdmin">
 	<div class="cms-panel-content center">
 		<div class="cms-content-view cms-tree-view-sidebar" id="cms-content-treeview" data-url="$LinkTreeView">
 			<ul>
 				<% loop $Providers %>
 					<li>
-						<a href="/admin/about?provider=$URLSegment">
+						<a href="$Link">
 							$Title
 						</a>
 					</li>

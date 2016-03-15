@@ -1,4 +1,4 @@
-<h1>Overview</h1>
+<h1>Application Dependencies</h1>
 
 <table class="dependency-list">
 	<thead>

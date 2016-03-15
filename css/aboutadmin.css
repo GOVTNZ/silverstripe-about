@@ -8,7 +8,7 @@
 	margin-bottom: 10px;
 }
 
-.AboutAdmin .cms-content-view a:link {
+.AboutAdmin .cms-content-view a:link, .AboutAdmin .cms-content-header a:link {
 	background-color: transparent;
 }
 
@@ -19,7 +19,19 @@
 
 }
 
-.AboutAdmin .dependency-list thead td {
+.AboutAdmin thead td {
 	font-weight: bold;
 	text-decoration: underline;
+}
+
+.AboutAdmin td {
+	padding: 1px 5px 1px 5px;
+}
+
+.AboutAdmin .app-version {
+	font-size: 1.2rem;
+}
+
+.AboutAdmin td.value {
+	font-weight: bold;
 }

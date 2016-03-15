@@ -30,22 +30,17 @@ class AboutAdmin extends LeftAndMain {
 				continue;
 			}
 
-			$title = $providerClass;			
-			if ($config->get($providerClass, 'provider_title')) {
-				$title = $config->get($providerClass, 'provider_title');
-			}
+			$inst = Object::create($providerClass);
 
 			$sort = 0;
 			if ($config->get($providerClass, 'provider_sort')) {
 				$sort = $config->get($providerClass, 'provider_sort');
 			}
 
-			$urlSegment = $providerClass;
-
 			$list->push(new ArrayData(array(
-				'Title' => $title,
+				'Title' => $inst->getTitle(),
 				'ClassName' => $providerClass,
-				'URLSegment' => $urlSegment,
+				'Link' => $inst->getLink(),
 				'Sort' => $sort
 			)));
 		}
@@ -56,6 +51,32 @@ class AboutAdmin extends LeftAndMain {
 		));
 
 		return $list;
+	}
+
+	// Return the admin as a controller, which breadcrumbs expects to see.
+	function Controller() {
+		return $this;
+	}
+
+	/**
+	 * Return breadcrumbs. We hardcode these.
+	 * @return ArrayList
+	 */
+	public function Breadcrumbs($unlinked = false) {
+		$result = new ArrayList();
+
+		$result->push(new ArrayData(array(
+			'Title' => 'About',
+			'Link' => $this->Link()
+		)));
+
+		$inst = $this->getSelectedProviderInstance();
+		$result->push(new ArrayData(array(
+			'Title' => $inst->getTitle(),
+			'Link' => $inst->getLink()
+		)));
+
+		return $result;
 	}
 
 	// Left and main is wired to use EditForm. We don't return a form, we instead figure out which provider
