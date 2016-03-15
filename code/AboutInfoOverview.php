@@ -8,9 +8,22 @@ class AboutInfoOverview extends AboutInfoProvider {
 	/**
 	 * The name of a path, interpreted from web root, which contains the version number of the application. If this file is
 	 * not present, no app version information is displayed.
+	 * @var string
 	 * @config
 	 */
 	private static $app_version_file = 'APP_VERSION';
+
+	/**
+	 * The names of modules to look for in the dependency list that are considered "major" dependencies, which are
+	 * displayed on the overview page. The values are the composer names of the modules.
+	 * @var array of strings
+	 * @config
+	 */
+	private static $major_dependencies = array(
+		'silverstripe/framework',
+		'silverstripe/cms',
+		'cwp/cwp-core'
+	);
 
 	// cache of version info, computed on demand.
 	private static $_appVersion = FALSE;
@@ -22,11 +35,9 @@ class AboutInfoOverview extends AboutInfoProvider {
 	public function KeyModuleVersions() {
 		$result = new ArrayList();
 
-		foreach (array(
-				'silverstripe/framework',
-				'silverstripe/cms',
-				'cwp/cwp-core'
-			) as $moduleName) {
+		$majorDeps = $this->getMajorDependencies();
+
+		foreach ($majorDeps as $moduleName) {
 			$version = AboutAppDependencyManager::get_module_version($moduleName);
 			if ($version !== FALSE) {
 				$result->push(new ArrayData(array(
@@ -37,6 +48,13 @@ class AboutInfoOverview extends AboutInfoProvider {
 		}
 
 		return $result;
+	}
+
+	// Get the major dependencies for the overview.
+	public function getMajorDependencies() {
+		$config = Config::inst();
+
+		return $config->get(get_class($this), 'major_dependencies');
 	}
 
 	public function ApplicationVersioned() {
@@ -88,11 +106,14 @@ class AboutInfoOverview extends AboutInfoProvider {
 
 	// Get the full path of the app version file.
 	protected function getAppVersionPath() {
+		$config = Config::inst();
+		$appPath = $config->get(get_class($this), 'app_version_file');
+
 		$path = Director::baseFolder();
-		if (substr(self::$app_version_file, 0, 1) != '/') {
+		if (substr($appPath, 0, 1) != '/') {
 			$path .= '/';
 		}
-		$path .= self::$app_version_file;
+		$path .= $appPath;
 		return $path;
 	}
 }
