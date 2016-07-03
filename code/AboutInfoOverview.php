@@ -65,6 +65,10 @@ class AboutInfoOverview extends AboutInfoProvider {
 		return false;
 	}
 
+	public function SiteMode() {
+		return Config::inst()->get('Director', 'environment_type');
+	}
+
 	public function AppVersion() {
 		$versionInfo = $this->getAppVersion();
 		return $versionInfo['version'];

@@ -37,3 +37,6 @@
 		<% end_loop %>
 	</tbody>
 </table>
+
+<h2>Site mode:</h2>
+<p>$SiteMode()</p>
