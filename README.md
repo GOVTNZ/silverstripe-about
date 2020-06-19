@@ -1,3 +1,9 @@
+# Deprecated
+
+This module is deprecated as of SilverStripe 4/Common Web Platoform 2 - we suggest users make use of the following set of modules via a recipe to gain similar features to this module [https://github.com/silverstripe/recipe-reporting-tools](https://github.com/silverstripe/recipe-reporting-tools)
+
+No further updates or patches will be available for this module as of March 2019.
+
 # Introduction
 
 The "About" module adds an admin section to your site that shows information about the execution context of the site. This includes:

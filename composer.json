@@ -13,5 +13,8 @@
     ],
     "require": {
         "silverstripe/framework": "*"
+    },
+    "suggest": {
+        "silverstripe/recipe-reporting-tools": "Add similar reporting about the site for SilverStripe 4 installs (suggested replacement)"
     }
 }
